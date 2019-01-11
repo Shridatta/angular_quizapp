@@ -3,6 +3,7 @@ import { QuizService } from "../services/quiz.service";
 import { Router } from "@angular/router";
 import { Option, Question, Quiz, Config } from "../models/index";
 import { MatButtonModule } from "@angular/material/button";
+import { CompileMetadataResolver } from "@angular/compiler";
 
 @Component({
   selector: "app-quiz",

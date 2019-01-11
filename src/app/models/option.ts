@@ -1,14 +1,14 @@
 export class Option {
   id: number;
   name: string;
-  isAnswer: boolean;
+  isAnswer: string;
   selected: boolean;
 
   constructor(data: any) {
     data = data || {};
     this.id = data.id;
     this.name = data.label;
-    this.isAnswer = this.parse(data.validity);
+    this.isAnswer = data.validity;
     console.log("the answer is" + this.isAnswer);
   }
   parse(response) {

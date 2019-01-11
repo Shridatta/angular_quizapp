@@ -63,6 +63,10 @@
                   disabled="disabled"
                 />
                 {{ option.name }}
+                <span *ngIf="option.isAnswer === 'valid'; else other_content">
+                  is Correct
+                </span>
+                <ng-template #other_content>is Incorrect</ng-template>
               </div>
             </div>
           </div>
