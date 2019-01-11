@@ -1,0 +1,9 @@
+body {
+  margin: 0;
+}
+
+.beginbutton {
+  background-color: #1f54a8;
+  color: white;
+  border-radius: 5px;
+}

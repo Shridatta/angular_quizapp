@@ -1,0 +1,79 @@
+<div>
+  <mat-toolbar>
+    <div><h1>Quiz Application</h1></div>
+  </mat-toolbar>
+  <mat-card>
+    <div id="quiz">
+      <h2 class="">React Quiz</h2>
+
+      <div *ngIf="mode == 'quiz' && quiz">
+        <mat-card class="questioncard">
+          <div *ngFor="let question of filteredQuestions">
+            <div>Question {{ page.index + 1 }} of {{ page.count }}.</div>
+            <h3>
+              {{ page.index + 1 }}. <span [innerHTML]="question.name"></span>
+            </h3>
+            <div>
+              <div *ngFor="let option of question.options">
+                <div class="option">
+                  <input
+                    [(ngModel)]="option.selected"
+                    id="{{ index }}"
+                    type="checkbox"
+                    (change)="onSelect(question, option)"
+                  />
+                  {{ option.name }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-card>
+
+        <div class="buttonparent">
+          <button
+            class="btn btn-default"
+            *ngIf="config.goback"
+            (click)="goTo(page.index - 1)"
+            color="primary"
+            mat-raised-button
+          >
+            Prev
+          </button>
+          <button
+            class=""
+            (click)="goTo(page.index + 1)"
+            color="primary"
+            mat-raised-button
+          >
+            Next
+          </button>
+        </div>
+      </div>
+      <div class="result" *ngIf="mode == 'result'">
+        <h2>Quiz Result</h2>
+        <div *ngFor="let question of quiz.questions; let index = index">
+          <div>
+            <h5>{{ index + 1 }}. {{ question.name }}</h5>
+            <div>
+              <div *ngFor="let option of question.options">
+                <input
+                  [(ngModel)]="option.selected"
+                  id="{{ index }}"
+                  type="checkbox"
+                  disabled="disabled"
+                />
+                {{ option.name }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="mode != 'result'">
+        <button (click)="onSubmit()" color="primary" mat-raised-button>
+          Submit Quiz
+        </button>
+      </div>
+    </div>
+  </mat-card>
+  <router-outlet></router-outlet>
+</div>
